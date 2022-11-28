@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MoneyXChange.com</title>
+
+  <style></style>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Bootstrap -->
+
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <script src=https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js></script>
+
+</head>
+
+<body onload="loadDataToTable()">
+  <div class="container" id="allElement">
+    <!-- Start Header Area -->
+    <div class="container" id="home">
+      <nav class="navbar navbar-expand-sm navbar-light bg-light rounded fixed-top">
+        <div class="container">
+          <a href="index.html" class="navbar-brand"><img src="img/moneyxChange2.png" alt="" width="200"
+              height="75" class="d-inline-block align-text-top" /></a>
+          <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar1">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div id="navbar1" class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto ">
+              <li class="nav-item">
+                <a href="#home" class="nav-link active" aria-current="page">Home</a>
+              </li>
+              <li class="nav-item">
+                <a href="#myTab" class="nav-link">Exchange</a>
+              </li>
+              <li class="nav-item">
+                <a href="#about" class="nav-link">About</a>
+              </li>
+              <li class="nav-item">
+                <a href="#contact" class="nav-link">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!-- End Header Area -->
+
+    <!-- Start Content Area -->
+    <div class="container text-dark text-center" id="welcomeText">
+      <h1 class="card-title mt-2">Welcome to MoneyXChange</h1>
+      <h4>
+        <p class="mb-5">
+          ยินดีต้อนรับทุกท่านเข้าสู่ MoneyXChange
+          เว็บไซต์สำหรับการตรวจสอบและคำนวณอัตราแลกเปลี่ยนค่าเงินประเทศต่างๆ
+        </p>
+      </h4>
+    </div>
+    <div class="container text-center" id="worldAnimate">
+      <img src="img/world-currency-exchange-rate-money.png" class="money-img img-fluid"><!-- CSS World Animation -->
+    </div>
+    <br />
+    <div class="container" id="exchange">
+      <div class="row">
+        <div class="col-lg-12 col-sm-12">
+          <div class="card text-center bg-light">
+            <div class="card-header">
+              <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link active" id="convertor-tab" data-bs-toggle="tab" data-bs-target="#convertor-tab-pane"
+                    type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true"><i
+                      class="fas fa-hand-holding-usd fa-fw me-2"></i>Convertor</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="table-tab" data-bs-toggle="tab" data-bs-target="#table-tab-pane"
+                    type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false" ><i
+                      class="fas fa-table fa-fw me-2"></i>Table</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="charts-tab" data-bs-toggle="tab" data-bs-target="#charts-tab-pane"
+                    type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false"><i
+                      class="fas fa-chart-line fa-fw me-2"></i>Chart</a>
+                </li>
+            </div>
+
+            <div class="card-body">
+              <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="convertor-tab-pane" role="tabpanel" aria-labelledby="table-tab"
+                  tabindex="0">
+                  <form>
+                    <h2 class="card-title mb-5 mt-3"><i class="fas fa-exchange-alt fa-sx me-2"></i>Exchange table</h2>
+                    <div class="row g-3 m-3">
+                      <div class="col-sm-12 col-md-3 col-lg-3">
+                        <label for="amount" class="form-label">Amount</label>
+                        <div class="input-group mb-3">
+                          <span class="input-group-text">$</span>
+                          <input type="number" class="form-control" id="amountMoney" placeholder="0.00" aria-label="Amount">
+                        </div>
+                      </div>
+                      <div class="col-sm-12 col-md-3 col-lg-3">
+                        <label for="currency01" class="form-label">Select Country</label>
+                        <div class="input-group">
+                          <span class="input-group-text">$</span>
+                          <select id="currency01" class="form-select" onchange="">
+                            <option value="AED">AED</option>
+                            <option value="ARS">ARS</option>
+                            <option value="AUD">AUD</option>
+                            <option value="BGN">BGN</option>
+                            <option value="BRL">BRL</option>
+                            <option value="BSD">BSD</option>
+                            <option value="CAD">CAD</option>
+                            <option value="CHF">CHF</option>
+                            <option value="CLP">CLP</option>
+                            <option value="CNY">CNY</option>
+                            <option value="COP">COP</option>
+                            <option value="CZK">CZK</option>
+                            <option value="DKK">DKK</option>
+                            <option value="DOP">DOP</option>
+                            <option value="EGP">EGP</option>
+                            <option value="EUR">EUR</option>
+                            <option value="FJD">FJD</option>
+                            <option value="GBP">GBP</option>
+                            <option value="GTQ">GTQ</option>
+                            <option value="HKD">HKD</option>
+                            <option value="HRK">HRK</option>
+                            <option value="HUF">HUF</option>
+                            <option value="IDR">IDR</option>
+                            <option value="ILS">ILS</option>
+                            <option value="INR">INR</option>
+                            <option value="ISK">ISK</option>
+                            <option value="JPY">JPY</option>
+                            <option value="KRW">KRW</option>
+                            <option value="KZT">KZT</option>
+                            <option value="MXN">MXN</option>
+                            <option value="MYR">MYR</option>
+                            <option value="NOK">NOK</option>
+                            <option value="NZD">NZD</option>
+                            <option value="PAB">PAB</option>
+                            <option value="PEN">PEN</option>
+                            <option value="PHP">PHP</option>
+                            <option value="PKR">PKR</option>
+                            <option value="PLN">PLN</option>
+                            <option value="PYG">PYG</option>
+                            <option value="RON">RON</option>
+                            <option value="RUB">RUB</option>
+                            <option value="SAR">SAR</option>
+                            <option value="SEK">SEK</option>
+                            <option value="SGD">SGD</option>
+                            <option value="THB" selected>THB</option>
+                            <option value="TRY">TRY</option>
+                            <option value="TWD">TWD</option>
+                            <option value="UAH">UAH</option>
+                            <option value="USD">USD</option>
+                            <option value="UYU">UYU</option>
+                            <option value="VND">VND</option>
+                            <option value="ZAR">ZAR</option>
+                          </select>
+                        </div>
+                      </div>
+    
+                      <div class="col-sm-12 col-md-3 col-lg-3 text-center">
+                        <label for="to" class="form-label">To</label>
+                        <div class="input-group mb-3">
+                          <button type="button" class="btn btn-secondary" id="swapCurrency" onclick="btnSwap()">
+                            <i class="fas fa-exchange-alt fa-lg"></i>
+                          </button>
+                        </div>
+                      </div>
+    
+                      <div class="col-sm-12 col-md-3 col-lg-3">
+                        <label for="currency02" class="form-label">Select Country</label>
+                        <div class="input-group">
+                          <span class="input-group-text">$</span>
+                          <select id="currency02" class="form-select" onchange="">
+                            <option value="AED">AED</option>
+                            <option value="ARS">ARS</option>
+                            <option value="AUD">AUD</option>
+                            <option value="BGN">BGN</option>
+                            <option value="BRL">BRL</option>
+                            <option value="BSD">BSD</option>
+                            <option value="CAD">CAD</option>
+                            <option value="CHF">CHF</option>
+                            <option value="CLP">CLP</option>
+                            <option value="CNY">CNY</option>
+                            <option value="COP">COP</option>
+                            <option value="CZK">CZK</option>
+                            <option value="DKK">DKK</option>
+                            <option value="DOP">DOP</option>
+                            <option value="EGP">EGP</option>
+                            <option value="EUR">EUR</option>
+                            <option value="FJD">FJD</option>
+                            <option value="GBP">GBP</option>
+                            <option value="GTQ">GTQ</option>
+                            <option value="HKD">HKD</option>
+                            <option value="HRK">HRK</option>
+                            <option value="HUF">HUF</option>
+                            <option value="IDR">IDR</option>
+                            <option value="ILS">ILS</option>
+                            <option value="INR">INR</option>
+                            <option value="ISK">ISK</option>
+                            <option value="JPY">JPY</option>
+                            <option value="KRW">KRW</option>
+                            <option value="KZT">KZT</option>
+                            <option value="MXN">MXN</option>
+                            <option value="MYR">MYR</option>
+                            <option value="NOK">NOK</option>
+                            <option value="NZD">NZD</option>
+                            <option value="PAB">PAB</option>
+                            <option value="PEN">PEN</option>
+                            <option value="PHP">PHP</option>
+                            <option value="PKR">PKR</option>
+                            <option value="PLN">PLN</option>
+                            <option value="PYG">PYG</option>
+                            <option value="RON">RON</option>
+                            <option value="RUB">RUB</option>
+                            <option value="SAR">SAR</option>
+                            <option value="SEK">SEK</option>
+                            <option value="SGD">SGD</option>
+                            <option value="THB">THB</option>
+                            <option value="TRY">TRY</option>
+                            <option value="TWD">TWD</option>
+                            <option value="UAH">UAH</option>
+                            <option value="USD" selected>USD</option>
+                            <option value="UYU">UYU</option>
+                            <option value="VND">VND</option>
+                            <option value="ZAR">ZAR</option>
+                          </select>
+                        </div>
+                      </div>
+    
+                    </div>
+    
+                    <div class="container text-center mt-5 mb-5">
+                      <h1>
+                        <div class="" id="amount">
+                          :
+                        </div>
+                        <div class="" id="result">
+                          Result:
+                        </div>
+                      </h1>
+                    </div>
+                    <div class="mt-3">
+                      <button type="button" class="btn btn-primary btn-lg float-end" onclick="convertMoney()">Convert</button>
+                    </div>
+                  </form>
+                </div>
+
+                <div class="tab-pane fade" id="table-tab-pane" role="tabpanel" aria-labelledby="table-tab"
+                  tabindex="0">
+                  <div class="container text-center" id="tableRate">
+                    <h1><i class="fas fa-file-invoice-dollar fa-xs me-2"></i>Rate Exchange</h1>
+                    <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-responsive caption-top" id="tbRateHeader">
+                      <caption>List of Exchange Rates base by USD rates</caption>
+                      <thead class="table-dark text-light">
+                        <tr>
+                          <th scope="col">Currency</th>
+                          <th scope="col">Rates</th>
+                        </tr>
+                      </thead>
+                      <tbody class="" id="tbRate"></tbody>
+                      <tfoot>
+                      </tfoot>
+
+                    </table>
+                  </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="charts-tab-pane" role="tabpanel" aria-labelledby="charts-tab"
+                  tabindex="0">
+                  <div class="container text-center" id="charts">
+                    <h1><i class="fas fa-chart-line fa-xs me-2"></i>Charts</h1>
+                    <canvas id="myChart" width="400" height="400"></canvas>
+                  </div>
+                </div>
+
+              </div>
+              
+
+            </div>
+            <div class="card-footer">
+              <div class="container text-center" id="history">
+                <div class="table-responsive">
+                <h1><i class="fas fa-history fa-xs me-2"></i>History</h1>
+                <table class="table table-bordered table-hover" id="tableHistory">
+
+                  <thead class="table-light">
+                    <tr>
+                      <th scope="col">Currency1</th>
+                      <th scope="col">Amount</th>
+                      <th scope="col">Currency2</th>
+                      <th scope="col">Rates</th>
+                      <th scope="col">Result</th>
+                    </tr>
+                  </thead>
+                  <tbody class="" id="tbHistory"></tbody>
+                  <tfoot></tfoot>
+                </table>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div class="container" id="about">
+        <div class="row">
+          <div class="col-lg-12 col-sm-12">
+            <div class="card bg-light">
+              <div class="card-body">
+                <h4 class="card-title">About this website</h4>
+                <h6 class="card-subtitle mb-2 text-muted">07/02/2022</h6>
+                <p class="card-text">
+                  Website for Check ratio exchange and rate of currency
+                </p>
+              </div>
+              <img src="img/money.jpg" class="card-img-bottom" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="container" id="contact">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Contact Information</h4>
+            <h6 class="card-subtitle mb-2 text-muted">07/02/2022</h6>
+            <p class="card-text">
+              Hyperdx00
+            </p>
+            <p class="card-text">Email: **********************</p>
+            <p class="card-text"> Tel: **********</p>
+            <a href="https://my-portfolio-hyperdx00.web.app" class="text-success">Please visit My-Portfolio</a>
+          </div>
+          <div class="card-footer">This website created by hyperdx00</div>
+        </div>
+      </div>
+
+      <!-- End Content Area -->
+      <br />
+
+      <!-- Start Footer Area-->
+      <div class="container">
+        <footer class="bg-dark text-center text-white rounded">
+          <!-- Grid container -->
+          <div class="container p-4 pb-0">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+              <!-- Facebook -->
+              <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998" href="#!" role="button"><i
+                  class="fab fa-facebook"></i></a>
+              <!-- Instagram -->
+              <a class="btn btn-primary btn-floating m-1" style="background-color: #ac2bac" href="#!" role="button"><i
+                  class="fab fa-instagram"></i></a>
+              <!-- Google -->
+              <a class="btn btn-primary btn-floating m-1" style="background-color: #dd4b39" href="#!" role="button"><i
+                  class="fab fa-google"></i></a>
+            </section>
+            <!-- Section: Social media -->
+          </div>
+          <!-- Grid container -->
+
+          <!-- Copyright -->
+          <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+            © 2022 Copyright:
+            <a class="text-white" href="https://my-portfolio-321209.web.app">Hyperdx00</a>
+          </div>
+          <!-- Copyright -->
+        </footer>
+      </div>
+      <!-- End Footer Area-->
+    </div>
+  </div>
+</body>
+<script src="script.js"></script>
+<script>
+  fetch(`https://v6.exchangerate-api.com/v6/YOUR-API-KEY/latest/USD`)
+                    .then((response) => response.json())
+                    .then((response) => {
+                        console.log(response.base_code);
+
+                        const currencyName = Object.keys(response.conversion_rates);
+                        const currencyValue = Object.values(response.conversion_rates);
+
+                        console.log(currencyName);
+                        console.log(currencyValue);
+
+
+                        //setup
+                        const data = {
+                            labels: currencyName,
+                            datasets: [
+                                {
+                                    label: response.base_code +' Latest Update '+ response.time_last_update_utc,
+                                    data: currencyValue,
+                                    backgroundColor: [
+                                        "rgba(255, 26, 104, 0.2)",
+                                        "rgba(54, 162, 235, 0.2)",
+                                        "rgba(255, 206, 86, 0.2)",
+                                        "rgba(75, 192, 192, 0.2)",
+                                        "rgba(153, 102, 255, 0.2)",
+                                        "rgba(255, 159, 64, 0.2)",
+                                        "rgba(0, 0, 0, 0.2)",
+                                    ],
+                                    borderColor: [
+                                        "rgba(255, 26, 104, 1)",
+                                        "rgba(54, 162, 235, 1)",
+                                        "rgba(255, 206, 86, 1)",
+                                        "rgba(75, 192, 192, 1)",
+                                        "rgba(153, 102, 255, 1)",
+                                        "rgba(255, 159, 64, 1)",
+                                        "rgba(0, 0, 0, 1)",
+                                    ],
+                                    borderWidth: 1,
+                                },
+                            ],
+                        };
+
+                        // config
+                        const config = {
+                            type: "bar",
+                            data,
+                            options: {
+                                scales: {
+                                    y: {
+                                        beginAtZero: true,
+                                    },
+                                },
+                            },
+                        };
+                        const myChart = new Chart(document.getElementById("myChart"), config);
+                    })
+                    .catch((err) => console.error(err));
+</script>
+
+
+</html>
